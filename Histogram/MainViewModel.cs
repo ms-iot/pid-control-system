@@ -121,15 +121,22 @@ namespace Histogram
             if (lineSerie != null)
             {
                 lineSerie.Points.Add(new DataPoint(DateTimeAxis.ToDouble(DateTime.Now), value));
+                lineSerie.Points.RemoveAll(oldData);
             }
 
             var guideLine = PlotModel.Series[1] as LineSeries;
             if (guideLine != null)
             {
                 guideLine.Points.Add(new DataPoint(DateTimeAxis.ToDouble(DateTime.Now), expectedSpeedValue));
+                guideLine.Points.RemoveAll(oldData);
             }
 
             lastUpdate = DateTime.Now;
+        }
+
+        private static bool oldData(DataPoint point)
+        {
+            return point.X < DateTimeAxis.ToDouble(DateTime.Now.AddSeconds(-30));
         }
 
         protected virtual void OnPropertyChanged(string propertyName)
