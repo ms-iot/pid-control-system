@@ -1,0 +1,6 @@
+[submodule "submodules/BusProviders"]
+	path = submodules/BusProviders
+	url = https://github.com/ms-iot/BusProviders.git
+[submodule "submodules/pid-controller"]
+	path = submodules/pid-controller
+	url = https://github.com/ms-iot/pid-controller.git

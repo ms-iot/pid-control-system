@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resources">
+      <UniqueIdentifier>6777b706-adc0-4952-9b63-fac8c5958a58</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Motor.cpp" />
+    <ClCompile Include="Encoder.cpp" />
+    <ClCompile Include="@(ArduinoSDKSources)" />
+    <ClCompile Include="@(ArduinoSDKSources)" />
+    <ClCompile Include="@(ArduinoSDKSources)" />
+    <ClCompile Include="@(ArduinoSDKSources)" />
+    <ClCompile Include="@(ArduinoSDKSources)" />
+    <ClCompile Include="@(ArduinoSDKSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Motor.h" />
+    <ClInclude Include="Encoder.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

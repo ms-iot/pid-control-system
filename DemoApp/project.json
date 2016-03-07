@@ -3,8 +3,9 @@
     "Microsoft.ApplicationInsights": "1.0.0",
     "Microsoft.ApplicationInsights.PersistenceChannel": "1.0.0",
     "Microsoft.ApplicationInsights.WindowsApps": "1.0.0",
+    "Microsoft.IoT.Lightning": "1.0.2-alpha",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
-    "OxyPlot.Windows": "1.0.0-unstable1974"
+    "WinRTXamlToolkit.Controls.Gauge.UWP": "1.9.4"
   },
   "frameworks": {
     "uap10.0": {}

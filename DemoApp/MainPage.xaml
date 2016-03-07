@@ -1,0 +1,111 @@
+﻿<Page
+    x:Class="DemoApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DemoApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:WinRTXamlToolkit.Controls"
+    mc:Ignorable="d" Loaded="Page_Loaded">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*" />
+            <RowDefinition Height=".5*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+        <Slider x:Name="Slider" Grid.ColumnSpan="6" Grid.Row="1" VerticalAlignment="Center" ValueChanged="Slider_ValueChanged" Maximum="1200" Value="0" SmallChange="10" Margin="20,0,20,0" IsThumbToolTipEnabled="False" LargeChange="50"/>
+        <controls:Gauge 
+            Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3"
+            Name="RPM_Gauge" 
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Minimum="0" 
+            Maximum="1200" 
+            Height="Auto" 
+            Value="0" 
+            NeedleBrush="OrangeRed" 
+            ScaleTickBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}" 
+            ScaleBrush="DimGray" 
+            TickBrush="DimGray" 
+            TrailBrush="#FF77BC00" 
+            ValueBrush="OrangeRed" 
+            Unit="RPM" 
+            UnitBrush="DimGray" 
+            Margin="20,20,20,20"
+        />
+        <controls:Gauge 
+            Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="3"
+            Name="Throttle_Gauge" 
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Minimum="0" 
+            Maximum="100" 
+            Height="Auto" 
+            Value="0" 
+            NeedleBrush="OrangeRed" 
+            ScaleTickBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}" 
+            ScaleBrush="DimGray" 
+            TickBrush="DimGray" 
+            TrailBrush="#FF77BC00" 
+            ValueBrush="OrangeRed" 
+            Unit="Power %" 
+            UnitBrush="DimGray" 
+            Margin="20,20,20,20"
+        />
+        <Viewbox Stretch="Uniform"  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+            <ContentPresenter>
+                <ContentPresenter.Content>
+                    <ToggleSwitch 
+                        x:Name="togglePID" 
+                        Margin="50,0,-50,0"
+                        Header="Closed-Loop Control" 
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        FontSize="12"
+                        Toggled="togglePID_Toggled"
+                    />
+                </ContentPresenter.Content>
+            </ContentPresenter>
+        </Viewbox>
+
+        <Viewbox Stretch="Uniform" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2">
+            <ContentPresenter>
+                <ContentPresenter.Content>
+                    <ToggleSwitch 
+                        x:Name="toggleAccelerometer" 
+                        Header="Accelerometer" 
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center" 
+                        FontSize="12"
+                        Toggled="toggleAccelerometer_Toggled" 
+                    />
+                </ContentPresenter.Content>
+            </ContentPresenter>
+        </Viewbox>
+
+        <StackPanel Name="targetIndicator" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Visibility="Collapsed">
+            <TextBlock 
+                Name="targetRPMLabel" 
+                Text="Target RPM:"
+                HorizontalAlignment="Center"
+                Margin="0,10,0,0"
+                FontSize="28"
+            />
+            <TextBlock 
+                Name="targetRPM" 
+                Text="0"
+                HorizontalAlignment="Center"
+                Margin="0,20,0,0" FontSize="40"
+            />
+        </StackPanel>
+    </Grid>
+</Page>
