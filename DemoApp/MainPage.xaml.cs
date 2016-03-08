@@ -33,6 +33,11 @@ namespace DemoApp
         private const double MAX_RPM = 500;
         private const double PID_INTERVAL_MS = 30;
 
+        // The PID gain constants were derived from trial and error tuning
+        private const float PROPORTIONAL_GAIN = 0.05f;
+        private const float INTEGRAL_GAIN = 0.008f;
+        private const float DERIVATIVE_GAIN = 0.1f;
+
         Motor motor;
         PidController.PidController pid;
         AutoResetEvent _pidReady = new AutoResetEvent(true);
@@ -42,7 +47,7 @@ namespace DemoApp
         public MainPage()
         {
             accelerometer = Accelerometer.GetDefault();
-            pid = new PidController.PidController(0.05f, 0.008f, 0.1f, 100f, 0f);
+            pid = new PidController.PidController(PROPORTIONAL_GAIN, INTEGRAL_GAIN, DERIVATIVE_GAIN, 100f, 0f);
             pid.SetPoint = 0;
             motor = new Motor(0, 36, 250);
 

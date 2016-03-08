@@ -39,8 +39,8 @@ void Microsoft::Maker::Motor::SetThrottle(double percent)
 	if (nullptr != _motorPwm)
 	{
 		_throttle = percent;
-		if (_throttle > 100.0) _throttle = 100.0;
-		if (_throttle < -100.0) _throttle = -100.0;
+		if (_throttle > THROTTLE_FULL_FORWARD) _throttle = THROTTLE_FULL_FORWARD;
+		if (_throttle < THROTTLE_FULL_REVERSE) _throttle = THROTTLE_FULL_REVERSE;
 
 		// For our motor the speed is determined by a pulse width in the range of 1-2ms.
 		// 1ms is full reverse, 1.5ms is stopped, and 2ms is full forward.
