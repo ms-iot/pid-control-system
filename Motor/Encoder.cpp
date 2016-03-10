@@ -9,7 +9,7 @@ std::function<void(PDMAP_WAIT_INTERRUPT_NOTIFY_BUFFER)> f;
 
 Microsoft::Maker::Encoder::Encoder(int pin, int pulsesPerRevolution) : _currentRPM(0), _dropCount(0), _isFirstInterrupt(true), _pin(pin)
 {
-	_degreesPerPulse = 360.00 / pulsesPerRevolution;
+	_degreesPerPulse = DEGREES_PER_REVOLUTION / pulsesPerRevolution;
 
 	// The high resolution clock frequency is fixed at system boot so we only
 	// need to query this value once
@@ -64,7 +64,7 @@ void Encoder::InterruptCallback(Encoder ^m, PDMAP_WAIT_INTERRUPT_NOTIFY_BUFFER p
 		// Smooth the RPM output using an exponential moving average. The 
 		// following uses an alpha value of 0.05;
 		// https://en.wikipedia.org/wiki/Moving_average#Exponential_moving_average
-		m->_currentRPM = 0.05*newValue + 0.95*m->_currentRPM;
+		m->_currentRPM = static_cast<uint32_t>(EMA_ALPHA*newValue + (1.0 - EMA_ALPHA)*m->_currentRPM);
 
 		// Keep track of the drop count so we know how well we're keeping up
 		// with the interrupts

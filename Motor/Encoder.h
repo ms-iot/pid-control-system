@@ -6,6 +6,10 @@
 
 #define DEGREES_PER_REVOLUTION	360.00
 
+// This value is the alpha variable for the exponential moving average
+// calculation used for smoothing the RPM value.
+#define EMA_ALPHA	0.05
+
 namespace Microsoft {
 namespace Maker {
 	public ref class Encoder sealed
