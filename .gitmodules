@@ -4,3 +4,4 @@
 [submodule "submodules/pid-controller"]
 	path = submodules/pid-controller
 	url = https://github.com/ms-iot/pid-controller.git
+	branch = master
