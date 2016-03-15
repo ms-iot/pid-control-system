@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="azure_threshold_trigger" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
+  <Role name="WorkerRole1">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=pidcontrolthreshold;AccountKey=Z++LskHmt3IU3UecQQeL3kHjt6OoRLRcNe2l36qTekQSXdK5q7bmTYN6rLHih5CNOTk+kUkpstt7kRbvmVrpAg==" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>
