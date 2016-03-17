@@ -21,38 +21,54 @@ static class AzureIoTHub
 
     public static async Task SendDeviceToCloudMessageAsync(string str)
     {
-        var deviceClient = DeviceClient.CreateFromConnectionString(deviceConnectionString, TransportType.Http1);
-        
-        var message = new Message(Encoding.ASCII.GetBytes(str));
+        try
+        {
+            var deviceClient = DeviceClient.CreateFromConnectionString(deviceConnectionString, TransportType.Http1);
 
-        await deviceClient.SendEventAsync(message);
+            var message = new Message(Encoding.ASCII.GetBytes(str));
+
+            await deviceClient.SendEventAsync(message);
+        }
+        catch (Exception e)
+        {
+            // Add your own log tracing here
+        }
     }
 
     public static async Task<float> ReceiveCloudToDeviceMessageAsync()
     {
-        var deviceClient = DeviceClient.CreateFromConnectionString(deviceConnectionString, TransportType.Http1);
-
-        while (true)
+        try
         {
-            var receivedMessage = await deviceClient.ReceiveAsync();
+            var deviceClient = DeviceClient.CreateFromConnectionString(deviceConnectionString, TransportType.Http1);
 
-            if (receivedMessage != null)
+            while (true)
             {
-                var messageData = Encoding.ASCII.GetString(receivedMessage.GetBytes());
-                await deviceClient.CompleteAsync(receivedMessage);
-                dynamic dataObject = JsonConvert.DeserializeObject(messageData);
-                deviceClient.CompleteAsync(receivedMessage);
-                return dataObject.ThresholdReached;
-            }
+                var receivedMessage = await deviceClient.ReceiveAsync();
 
-            //  Note: In this sample, the polling interval is set to 
-            //  10 seconds to enable you to see messages as they are sent.
-            //  To enable an IoT solution to scale, you should extend this 
-            //  interval. For example, to scale to 1 million devices, set 
-            //  the polling interval to 25 minutes.
-            //  For further information, see
-            //  https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#messaging
-            await Task.Delay(TimeSpan.FromMilliseconds(500));
+                if (receivedMessage != null)
+                {
+                    var messageData = Encoding.ASCII.GetString(receivedMessage.GetBytes());
+                    await deviceClient.CompleteAsync(receivedMessage);
+                    dynamic dataObject = JsonConvert.DeserializeObject(messageData);
+                    deviceClient.CompleteAsync(receivedMessage);
+                    return dataObject.ThresholdReached;
+                }
+
+                //  Note: In this sample, the polling interval is set to 
+                //  10 seconds to enable you to see messages as they are sent.
+                //  To enable an IoT solution to scale, you should extend this 
+                //  interval. For example, to scale to 1 million devices, set 
+                //  the polling interval to 25 minutes.
+                //  For further information, see
+                //  https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#messaging
+                await Task.Delay(TimeSpan.FromMilliseconds(500));
+            }
         }
+        catch (Exception e)
+        {
+            // Add your own log tracing here
+            return 100;
+        }
+
     }
 }
