@@ -41,8 +41,12 @@ namespace DemoApp
         Motor motor;
         PidController.PidController pid;
         AutoResetEvent _pidReady = new AutoResetEvent(true);
+        AutoResetEvent _azurePipeReady = new AutoResetEvent(true);
         ThreadPoolTimer pidTimer;
         Accelerometer accelerometer;
+
+        // Only for the demo-use case of limiting the throttle via IoTHub
+        float iotHubThresholdValue = 100f;
 
         public MainPage()
         {
@@ -98,6 +102,24 @@ namespace DemoApp
         {
             await motor.Initialize();
             ThreadPoolTimer.CreatePeriodicTimer(UpdateUI, TimeSpan.FromMilliseconds(300));
+            ThreadPoolTimer.CreatePeriodicTimer((source) =>
+            {
+                _azurePipeReady.WaitOne();
+                SendToAzureIoTHub(_azurePipeReady);
+            }, TimeSpan.FromSeconds(1));
+            ReceiveCloudToDeviceThrottleMessage();
+        }
+
+        private async void ReceiveCloudToDeviceThrottleMessage()
+        {
+            iotHubThresholdValue = await AzureIoTHub.ReceiveCloudToDeviceMessageAsync();
+            ReceiveCloudToDeviceThrottleMessage();
+        }
+
+        private async void SendToAzureIoTHub(AutoResetEvent resetEvent)
+        {
+            await AzureIoTHub.SendDeviceToCloudMessageAsync("{\"rpm\":"+motor.RPM + ",\"throttle\":" + motor.Throttle + "}");
+            resetEvent.Set();
         }
 
         private async void UpdateUI(ThreadPoolTimer timer)
@@ -118,7 +140,14 @@ namespace DemoApp
         private void UpdatePID(AutoResetEvent resetEvent)
         {
             pid.ProcessVariable = motor.RPM;
-            motor.Throttle = pid.ControlVariable;
+            if (iotHubThresholdValue < pid.ControlVariable)
+            {
+                motor.Throttle = iotHubThresholdValue;
+            }
+            else
+            {
+                motor.Throttle = pid.ControlVariable;
+            }
             resetEvent.Set();
         }
 

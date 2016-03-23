@@ -37,6 +37,34 @@
     <ClCompile Include="@(LightningSources)" />
     <ClCompile Include="@(LightningSources)" />
     <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(ArduinoSDKSources)" />
+    <ClCompile Include="@(ArduinoSDKSources)" />
+    <ClCompile Include="@(ArduinoSDKSources)" />
+    <ClCompile Include="@(ArduinoSDKSources)" />
+    <ClCompile Include="@(ArduinoSDKSources)" />
+    <ClCompile Include="@(ArduinoSDKSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
+    <ClCompile Include="@(LightningSources)" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

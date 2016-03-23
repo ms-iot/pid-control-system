@@ -3,8 +3,10 @@
     "Microsoft.ApplicationInsights": "1.0.0",
     "Microsoft.ApplicationInsights.PersistenceChannel": "1.0.0",
     "Microsoft.ApplicationInsights.WindowsApps": "1.0.0",
-    "Microsoft.IoT.Lightning": "1.0.2-alpha",
+    "Microsoft.Azure.Devices.Client": "1.0.2",
+    "Microsoft.IoT.Lightning": "1.0.3-alpha",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
+    "Newtonsoft.Json": "6.0.8",
     "WinRTXamlToolkit.Controls.Gauge.UWP": "1.9.4"
   },
   "frameworks": {
