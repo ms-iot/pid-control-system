@@ -53,3 +53,8 @@ This project contains the PID logic for achieving closed loop control of the mot
 
 ## Microsoft.IoT.Lightning.Providers
 This project is the WinRT layer that connects to the underlying Lightning (DMAP) layer and is documented [here](https://github.com/ms-iot/BusProviders/tree/develop/Microsoft.IoT.Lightning.Providers).
+
+
+===
+
+This project has adopted the [Microsoft Open Source Code of Conduct](http://microsoft.github.io/codeofconduct). For more information see the [Code of Conduct FAQ](http://microsoft.github.io/codeofconduct/faq.md) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments. 
